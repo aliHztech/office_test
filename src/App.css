@@ -41,6 +41,30 @@
 .table tbody tr td a:hover {
   color: green;
 }
+.table > thead tr td {
+  background: #f2f3a2 !important;
+}
+.responsive {
+  width: 50% !important;
+  padding: 48px !important;
+  border-radius: 10px;
+}
+#root {
+  padding: 10px;
+}
+@media screen and (max-width: 767px) and (min-width: 300px) {
+  .responsive {
+    width: 100% !important;
+    padding: 10px !important;
+  }
+  td {
+    font-size: 13px;
+  }
+  button {
+    padding: 5px;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

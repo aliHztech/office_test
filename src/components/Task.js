@@ -59,8 +59,8 @@ const Task = () => {
           <Modal.Title>TASK</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="d-flex w-100 vh-100 justify-content-center align-items-center">
-            <div className="w-50 border bg-secondary text-white p-5">
+          <div className="d-flex w-100 vh-100 justify-content-center align-items-center ">
+            <div className="border bg-secondary text-white responsive">
               <h3>Add User Task</h3>
               <form onSubmit={addTaskFunc}>
                 <div>
@@ -97,7 +97,7 @@ const Task = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <button className="btn btn-info m-3" onClick={handleShow}>
+      <button className="btn btn-info my-3" onClick={handleShow}>
         Add
       </button>
       <table className="table">
@@ -120,7 +120,7 @@ const Task = () => {
                   <td>{d.deadLine}</td>
                   <td>
                     <button
-                      className="btn btn-sm btn-danger ms-2"
+                      className="btn btn-sm btn-danger "
                       onClick={() => handleDelete(d.key, id)}
                     >
                       {" "}
@@ -131,7 +131,7 @@ const Task = () => {
                     {" "}
                     <Link
                       to={`/edit/${id}/${d.key}`}
-                      className="btn-sm btn btn-warning ms-2"
+                      className="btn-sm btn btn-warning "
                     >
                       edit{" "}
                     </Link>
