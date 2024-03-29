@@ -105,6 +105,8 @@ const Task = () => {
           <tr>
             <td>TASK</td>
             <td>DEADLINE</td>
+            <td>Delete</td>
+            <td>Edit</td>
           </tr>
         </thead>
         {mainObj.hasOwnProperty("task") ? (
