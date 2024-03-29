@@ -98,7 +98,7 @@ const Task = () => {
         </Modal.Footer>
       </Modal>
       <button className="btn btn-info my-3" onClick={handleShow}>
-        Add
+        Add New Task
       </button>
       <table className="table">
         <thead>
@@ -131,7 +131,7 @@ const Task = () => {
                     {" "}
                     <Link
                       to={`/edit/${id}/${d.key}`}
-                      className="btn-sm btn btn-warning "
+                      className="btn-sm btn btn-info "
                     >
                       edit{" "}
                     </Link>
