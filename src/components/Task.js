@@ -71,6 +71,7 @@ const Task = () => {
                     className="form-control"
                     value={task}
                     onChange={(e) => setTask(e.target.value)}
+                    required
                   />
                 </div>
                 <div>
@@ -81,6 +82,7 @@ const Task = () => {
                     className="form-control"
                     value={deadLine}
                     onChange={(e) => setDeadLine(e.target.value)}
+                    required
                   />
                 </div>
                 <br />

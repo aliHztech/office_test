@@ -30,6 +30,10 @@
 .modal-dialog {
   max-width: 1000px !important;
 }
+.loader {
+  height: 100px;
+  width: 100px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

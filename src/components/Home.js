@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTodo } from "../redux/TodoSlice";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Home = () => {
           </thead>
           <tbody>
             {state.isloading ? (
-              <h1>loading</h1>
+              <Loading />
             ) : (
               state.data.map((todo, index) => {
                 return (
