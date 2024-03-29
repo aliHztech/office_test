@@ -50,7 +50,7 @@ const Task = () => {
       const newArray = mainObj.task.filter((f) => f.key !== key);
       dispatch(deleteTask({ key, newArray, id }));
     }
-    toast.error("task deleted success !!");
+    toast.error("task deleted successfully !!");
   };
   return (
     <div>
