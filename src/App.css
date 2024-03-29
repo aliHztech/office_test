@@ -63,6 +63,14 @@
   button {
     padding: 5px;
   }
+  .Toastify__toast-container {
+    font-size: 13px;
+    width: 70vw;
+    left: 50px;
+  }
+  .modal-content {
+    max-height: 400px !important;
+  }
 }
 
 @keyframes App-logo-spin {

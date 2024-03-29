@@ -91,11 +91,6 @@ const Task = () => {
             </div>
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => handleClose()}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
       <button className="btn btn-info my-3" onClick={handleShow}>
         Add New Task
