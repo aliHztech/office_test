@@ -26,7 +26,7 @@ const Edit = () => {
     <>
       <div className="d-flex w-100 vh-100 justify-content-center align-items-center">
         <div className="w-50 border bg-secondary text-white p-5 responsive">
-          <h3>Update User</h3>
+          <h3>Update User Task</h3>
           <form onSubmit={handleEdit}>
             <div>
               <label htmlFor="name">Name:</label>
