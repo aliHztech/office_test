@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTodo } from "../redux/TodoSlice";
 import { Link } from "react-router-dom";
@@ -22,7 +22,7 @@ const Home = () => {
           <thead>
             <tr>
               <td>
-                <b>user name</b>
+                <b>user names</b>
               </td>
             </tr>
           </thead>

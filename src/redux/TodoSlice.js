@@ -10,7 +10,6 @@ const todoSlice = createSlice({
   initialState: {
     isloading: false,
     data: [],
-    // todo: [{ id: 1, alltodos: [{ task: "ts", deadline: "2" }] }],
     error: false,
   },
   extraReducers: (builder) => {
@@ -27,9 +26,8 @@ const todoSlice = createSlice({
   },
   reducers: {
     addUser: (state, action) => {
-      const { id, key, task, deadline } = action.payload;
-      console.log(id, "id", key, "keyyy");
-      console.log(action.payload, "stateeeeeeeeeeeeeeeeeeee");
+      const { id } = action.payload;
+      console.log(action.payload, "actionpayload");
       const find = state.data.find((user) => user.id == id);
       if (find.task) {
         const available = action.payload;
@@ -39,12 +37,9 @@ const todoSlice = createSlice({
         console.log(action.payload);
         find.task = [action.payload];
       }
-
-      //   return (state.data = [...state.data, action.payload]);
     },
     deleteTask: (state, action) => {
-      const { key, newArray, id } = action.payload;
-      // console.log(key, newArray);
+      const { newArray, id } = action.payload;
       const condition = state.data[id - 1].hasOwnProperty("task");
       if (condition) {
         state.data[id - 1].task = newArray;
@@ -52,7 +47,7 @@ const todoSlice = createSlice({
     },
     editTask: (state, action) => {
       const { id, key, task, deadLine } = action.payload;
-      console.log(id, key, task, deadLine, "id & key");
+      console.log(id, key, task, deadLine, "id, key, task, deadLine ");
       const user = state.data.find((user) => user.id == id);
       const taskArray = user.task.find((f) => f.key == key);
 

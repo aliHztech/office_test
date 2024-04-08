@@ -9,14 +9,13 @@ const Edit = () => {
   const existingUser = state.data.filter((f) => f.id == id);
   const mainUser = existingUser[0].task.filter((f) => f.key == key);
   const taskObject = mainUser[0];
-  console.log(taskObject, "taskArray");
+  console.log(taskObject, "task object");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [task, setTask] = useState(taskObject.task);
   const [deadLine, setDeadLine] = useState(taskObject.deadLine);
-  console.log(task, deadLine, "task , deadline");
 
   const handleEdit = () => {
     dispatch(editTask({ id, key, task, deadLine }));

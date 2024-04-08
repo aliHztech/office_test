@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { addUser, deleteTask } from "../redux/TodoSlice";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,7 +11,6 @@ const Task = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.todo);
-  console.log(state.data, id);
   const existingUser = state.data.filter((f) => f.id == id);
   const mainObj = existingUser[0];
   console.log(mainObj, "mainObj");
@@ -22,9 +20,7 @@ const Task = () => {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => {
-    setShow(true);
-  };
+  const handleShow = () => setShow(true);
 
   const addTaskFunc = (e) => {
     e.preventDefault();
@@ -43,12 +39,10 @@ const Task = () => {
   };
 
   const handleDelete = (key, searchID) => {
-    // console.log(mainObj.task, "\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
     const user = mainObj.task.find((f) => f.key === key);
-    // console.log(user);
     if (user) {
       const newArray = mainObj.task.filter((f) => f.key !== key);
-      dispatch(deleteTask({ key, newArray, id }));
+      dispatch(deleteTask({ newArray, id }));
     }
     toast.error("task deleted successfully !!");
   };
@@ -104,11 +98,9 @@ const Task = () => {
             <td>Edit</td>
           </tr>
         </thead>
-        {mainObj.hasOwnProperty("task") ? (
+        {findId && mainObj.task.length !== 0 ? (
           <tbody>
-            {console.log(mainObj.task)}
             {mainObj.task.map((d, i) => {
-              // console.log(d.task, "tassssssssssssssssssssskkkkk");
               return (
                 <tr key={i}>
                   <td>{d.task}</td>

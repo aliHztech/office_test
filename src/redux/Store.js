@@ -4,7 +4,6 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { combineReducers } from "@reduxjs/toolkit";
 
-import { persistStore } from "redux-persist";
 import {
   FLUSH,
   REHYDRATE,
@@ -33,9 +32,3 @@ export const store = configureStore({
       },
     }),
 });
-
-// export const store = configureStore({
-//   reducer: {
-//     todo: todoReducer,
-//   },
-// });
