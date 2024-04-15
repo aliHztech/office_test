@@ -28,7 +28,7 @@ const Edit = () => {
           <h3>Update User Task</h3>
           <form onSubmit={handleEdit}>
             <div>
-              <label htmlFor="name">Name:</label>
+              <label htmlFor="name">Task:</label>
               <input
                 type="text"
                 name="name"
@@ -39,10 +39,10 @@ const Edit = () => {
               />
             </div>
             <div>
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">Deadline:</label>
               <input
-                type="text"
-                name="email"
+                type="date"
+                name="date"
                 className="form-control"
                 value={deadLine}
                 onChange={(e) => setDeadLine(e.target.value)}

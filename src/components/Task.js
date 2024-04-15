@@ -6,7 +6,9 @@ import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Button from "react-bootstrap/Button";
+import ModalEdit from "./ModalEdit";
+import { editTask } from "../redux/TodoSlice";
 const Task = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -19,8 +21,11 @@ const Task = () => {
   const [deadLine, setDeadLine] = useState("");
 
   const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleEditShow = () => setShowEdit(true);
+  const handleEditclose = () => setShowEdit(false);
 
   const addTaskFunc = (e) => {
     e.preventDefault();
@@ -46,6 +51,31 @@ const Task = () => {
     }
     toast.error("task deleted successfully !!");
   };
+  const [mainKey, setMainKey] = useState();
+  if (findId) {
+    const mainTask = mainObj.task.filter((f) => f.key == mainKey);
+    var taskObject = mainTask[0];
+    console.log(taskObject, "taskObject.task ...............");
+  }
+
+  const modalPopup = async (k) => {
+    const mainTask = mainObj.task.find((f) => f.key == k);
+    if (mainTask) {
+      setTask(mainTask.task);
+      setDeadLine(mainTask.deadLine);
+      handleEditShow();
+      setMainKey(k);
+    }
+  };
+
+  const handleEdit = (event) => {
+    event.preventDefault();
+    console.log(mainKey, "mainKey");
+    dispatch(editTask({ id, key: mainKey, task, deadLine }));
+    handleEditclose();
+    toast.info("Task Updated successfully");
+  };
+
   return (
     <div>
       <Modal show={show} onHide={handleClose}>
@@ -54,7 +84,7 @@ const Task = () => {
         </Modal.Header>
         <Modal.Body>
           <div className="d-flex w-100 vh-100 justify-content-center align-items-center ">
-            <div className="border bg-secondary text-white responsive">
+            <div className="border bg-secondary text-white responsive w-100 p-2">
               <h3>Add User Task</h3>
               <form onSubmit={addTaskFunc}>
                 <div>
@@ -81,6 +111,45 @@ const Task = () => {
                 </div>
                 <br />
                 <button className="btn btn-info"> ADD</button>
+              </form>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal show={showEdit} onHide={handleEditclose}>
+        <Modal.Header closeButton>
+          <Modal.Title>TASK</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="d-flex w-100 vh-100 justify-content-center align-items-center">
+            <div className="w-50 border bg-secondary text-white p-5  w-100 p-2">
+              <h3>Update User Task</h3>
+              <form onSubmit={handleEdit}>
+                <div>
+                  <label htmlFor="name">Task:</label>
+                  <input
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    value={task}
+                    onChange={(e) => setTask(e.target.value)}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email">Deadline:</label>
+                  <input
+                    type="date"
+                    name="date"
+                    className="form-control"
+                    value={deadLine}
+                    onChange={(e) => setDeadLine(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <br />
+                <button className="btn btn-info"> Update</button>
               </form>
             </div>
           </div>
@@ -116,12 +185,18 @@ const Task = () => {
                   </td>
                   <td>
                     {" "}
-                    <Link
-                      to={`/edit/${id}/${d.key}`}
+                    <Button
+                      onClick={() => modalPopup(d.key)}
                       className="btn-sm btn btn-info "
                     >
                       edit{" "}
-                    </Link>
+                    </Button>
+                    {/* <Button
+                      variant="primary"
+                      onClick={() => setModalShow(true)}
+                    >
+                      Launch vertically centered modal
+                    </Button> */}
                   </td>
                 </tr>
               );
