@@ -72,7 +72,7 @@ const Task = () => {
     console.log(mainKey, "mainKey");
     dispatch(editTask({ id, key: mainKey, task, deadLine }));
     handleEditclose();
-    toast.info("Task Updated successfully");
+    toast.success("Task Updated successfully", { theme: "dark" });
   };
 
   return (
